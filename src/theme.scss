@@ -1,7 +1,7 @@
 @import "~variables";
 
 @mixin transition($type : all) {
-  transition: 0.3s ease $type;
+  transition: 0.3s linear $type;
 }
 
 @mixin disabled($name : "neutral") {

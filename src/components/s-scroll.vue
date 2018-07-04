@@ -1,7 +1,6 @@
 <style lang="scss">
 @import "../theme.scss";
 
-
 .s-scroll {
   position: relative;
   overflow: hidden;
@@ -30,11 +29,10 @@
   &__track {
     position: absolute;
     @include set-color("grey1", "background");
-    transition: opacity 0.3s linear;
     right: 0;
     bottom: 0;
     opacity: 0;
-
+    @include transition(opacity);
     &--y {
       top: 0;
       width: $scroll-size;
@@ -70,32 +68,16 @@
 </style>
 <template>
   <div v-bind:class="classObj">
-    <div ref="scroller"
-         v-on:scroll="onScroll"
-         class="s-scroll__scroller">
-        <slot></slot>
+    <div ref="scroller" v-on:scroll="onScroll" class="s-scroll__scroller">
+      <slot></slot>
     </div>
-    <div ref="trackY"
-         v-show="showY"
-         v-on:click="onTrackClickY"
-         class="s-scroll__track s-scroll__track--y">
-        <div ref="thumbY"
-             v-on:click="onThumbClickY"
-             v-on:mousedown="onThumbMousedownY"
-             v-bind:style="{height: thumbYHeight + 'px', top:thumbYTop + 'px'}"
-             class="s-scroll__thumb s-scroll__thumb--y"></div>
+    <div ref="trackY" v-show="showY" v-on:click="onTrackClickY" class="s-scroll__track s-scroll__track--y">
+      <div ref="thumbY" v-on:click="onThumbClickY" v-on:mousedown="onThumbMousedownY" v-bind:style="{height: thumbYHeight + 'px', top:thumbYTop + 'px'}" class="s-scroll__thumb s-scroll__thumb--y"></div>
     </div>
-    <div ref="trackX"
-         v-show="showX"
-         v-on:click="onTrackClickX"
-         class="s-scroll__track s-scroll__track--x">
-        <div ref="thumbX"
-             v-on:click="onThumbClickX"
-             v-on:mousedown="onThumbMousedownX"
-             v-bind:style="{width: thumbXWidth + 'px', left:thumbXLeft + 'px'}"
-             class="s-scroll__thumb s-scroll__thumb--x"></div>
+    <div ref="trackX" v-show="showX" v-on:click="onTrackClickX" class="s-scroll__track s-scroll__track--x">
+      <div ref="thumbX" v-on:click="onThumbClickX" v-on:mousedown="onThumbMousedownX" v-bind:style="{width: thumbXWidth + 'px', left:thumbXLeft + 'px'}" class="s-scroll__thumb s-scroll__thumb--x"></div>
     </div>
-</div>
+  </div>
 </template>
 <script>
 import Utility from "../utility.js";
