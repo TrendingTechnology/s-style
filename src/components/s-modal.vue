@@ -56,9 +56,9 @@
 }
 </style>
 <template>
-  <div v-bind:class="classObj" v-if="computedValue">
-    <div class="s-modal__background" v-on:click="closeModal()"></div>
-    <transition name="s-fade">
+  <transition name="s-fade">
+    <div v-bind:class="classObj" v-if="computedValue">
+      <div class="s-modal__background" v-on:click="closeModal()"></div>
       <div class="s-modal__wrapper">
         <div class="s-modal__content">
           <slot></slot>
@@ -68,8 +68,9 @@
         </div>
         <div class="s-clear"></div>
       </div>
-    </transition>
-  </div>
+    </div>
+  </transition>
+
 </template>
 <script>
 import Input from "../mixins/input.js";
