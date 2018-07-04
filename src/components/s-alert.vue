@@ -48,15 +48,15 @@
 </style>
 <template>
   <transition name="s-fade">
-    <div :disabled="disabled" v-bind:class="classObj" v-if="computedValue">
+    <div v-bind:class="classObj" v-if="computedValue">
       <div class="s-alert__content">
         <slot>
           <div class="s-label" v-if="label"> {{label}} </div>
-        {{text}} 
+          {{text}}
         </slot>
       </div>
-      <div class="s-alert__times" v-show="closeable">
-        <i class="fas fa-times" v-on:click="computedValue = false"></i>
+      <div class="s-alert__times" v-on:click="computedValue = false" v-show="closeable">
+        <i class="fas fa-times"></i>
       </div>
       <div class="s-clear"></div>
     </div>

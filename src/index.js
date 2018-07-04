@@ -30,6 +30,7 @@ import SAccordionItem from './components/s-accordion-item.vue'
 import SBlock from './components/s-block.vue'
 import STabs from './components/s-tabs.vue'
 import SAlert from './components/s-alert.vue'
+import SModal from './components/s-modal.vue'
 
 // Plugin
 class SimpleStyle {
@@ -52,9 +53,9 @@ class SimpleStyle {
     Vue.component('s-block', SBlock)
     Vue.component('s-tabs', STabs)
     Vue.component('s-alert', SAlert)
+    Vue.component('s-modal', SModal)
   }
 }
-
 
 export {
   SButton,
@@ -73,7 +74,8 @@ export {
   SAccordionItem,
   SBlock,
   STabs,
-  SAlert
+  SAlert,
+  SModal
 }
 
 if (typeof window !== 'undefined' && window.Vue) {

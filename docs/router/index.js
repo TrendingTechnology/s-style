@@ -17,6 +17,7 @@ import checklist from './views/checklist.vue'
 import dropdown from './views/dropdown.vue'
 import input from './views/input.vue'
 import list from './views/list.vue'
+import modal from './views/modal.vue'
 import radio from './views/radio.vue'
 import scroll from './views/scroll.vue'
 import slider from './views/slider.vue'
@@ -109,6 +110,11 @@ export default new VueRouter({
           name: 'List',
           path: 'list',
           component: list
+        },
+        {
+          name: 'Modal',
+          path: 'modal',
+          component: modal
         },
         {
           name: 'Radio',
