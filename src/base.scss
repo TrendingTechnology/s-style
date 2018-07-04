@@ -1,0 +1,282 @@
+@import "./theme.scss";
+/* **********************
+Start - Table of Contents
+********************* */
+
+/* ** Global ** */
+
+/* ** Utility ** */
+
+/* ** Color ** */
+
+/* ** Typography ** */
+
+/* ** Container ** */
+
+/* ********************
+End - Table of Contents
+******************* */
+
+/* * Start - Global */
+
+* {
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+}
+
+html {
+    font-size: 62.5%;
+}
+
+body {
+    height: 100%;
+    width: 100%;
+    overflow: auto;
+    font-family: $font-family;
+    font-size: $font-size;
+    line-height: $line-height;
+    font-weight: $font-weight;
+}
+
+code {
+    @include set-color("grey1", "background");
+    @include set-color("grey3", "border", "1px solid");
+    font-size: 1em;
+    line-height: 1.5;
+    margin: 0;
+    padding: $spacing;
+}
+
+pre {
+    font-family: monospace, monospace;
+    font-size: 1em;
+    line-height: 1.5;
+    margin: 0;
+    padding: 0;
+    &>code {
+        display: block;
+    }
+}
+
+/* * End - Global */
+
+/* * Start - Utility */
+
+.s-right {
+    float: right;
+}
+
+.s-left {
+    float: left;
+}
+
+.s-clear::after {
+    content: '';
+    display: block;
+    clear: both;
+}
+
+.s-group {
+    display: flex;
+    &>* {
+        margin-left: $spacing/2 !important;
+        margin-right: $spacing/2 !important;
+    }
+    &> :first-child {
+        margin-left: auto !important;
+    }
+    &> :last-child {
+        margin-right: auto !important;
+    }
+}
+
+.s-fade-enter-active,
+.s-fade-leave-active {
+    @include transition(opacity)
+}
+
+.s-fade-enter,
+.s-fade-leave-to {
+    opacity: 0;
+}
+
+/* * End - Utility */
+
+/* ** Start - Colors ** */
+
+:root {
+    @each $name,
+    $color in $colors {
+        --color-#{$name}: #{$color};
+    }
+}
+
+.s-color {
+    &__text {
+        &--primary {
+            @include set-color("primary", "color", "", "!important")
+        }
+        &--success {
+            @include set-color("success", "color", "", "!important")
+        }
+        &--error {
+            @include set-color("error", "color", "", "!important")
+        }
+        &--text {
+            @include set-color("text", "color", "", "!important")
+        }
+        &--text-invert {
+            @include set-color("text-invert", "color", "", "!important")
+        }
+        &--title {
+            @include set-color("title", "color", "", "!important")
+        }
+        &--label {
+            @include set-color("label", "color", "", "!important")
+        }
+    }
+    &__background {
+        &--primary {
+            @include set-color("primary", "background", "", "!important")
+        }
+        &--success {
+            @include set-color("success", "background", "", "!important")
+        }
+        &--error {
+            @include set-color("error", "background", "", "!important")
+        }
+        &--grey1 {
+            @include set-color("grey1", "background", "", "!important")
+        }
+        &--grey2 {
+            @include set-color("grey2", "background", "", "!important")
+        }
+        &--neutral {
+            @include set-color("neutral", "background", "", "!important")
+        }
+    }
+}
+
+/* ** End - Colors ** */
+
+/* * Start - Typography */
+
+@mixin header() {
+    line-height: 1.25em;
+    margin-top: 1.25em * 1/4;
+    margin-bottom: 1.25em * 1/4;
+    @include set-color("title", "color");
+    @include text-overflow();
+}
+
+h1 {
+    font-size: 3.5em;
+    @include header();
+}
+
+h2 {
+    font-size: 2.75em;
+    @include header();
+}
+
+h3 {
+    font-size: 2em;
+    @include header();
+}
+
+h4 {
+    font-size: 1.5em;
+    @include header();
+}
+
+h5 {
+    font-size: 1.25em;
+    @include header();
+}
+
+h6 {
+    font-size: 1em;
+    @include header();
+}
+
+.s-small {
+    font-size: 0.875em;
+    @include set-color("label", "color");
+}
+
+.s-message {
+    font-size: 0.875em;
+    @include set-color("label", "color");
+    @include text-overflow();
+    display: block;
+}
+
+.s-label {
+    font-size: 0.875em;
+    @include set-color("label", "color");
+    @include text-overflow();
+    width: 100%;
+    margin-top: 0.5 * $spacing;
+    padding-top: 0.5 * $spacing;
+    height: $height - 0.5 * $spacing;
+    &+* {
+        margin-bottom: 0.5 * $spacing;
+    }
+}
+
+.s-text {
+    @include set-color("text", "color");
+    @include text-overflow();
+    height: $height;
+    line-height: $height;
+    width: 100%;
+}
+
+.s-emphasis {
+    font-weight: bold;
+    @include set-color("primary", "color")
+}
+
+/* * End - Typography */
+
+/* * Start - Container */
+
+.s-box {
+    box-sizing: border-box;
+    padding: $spacing;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    @include set-color("grey3", "border", "1px solid");
+}
+
+table {
+    width: 100%;
+    border-spacing: 0;
+    @include set-color("grey3", "border-color");
+}
+
+tr {
+    height: $height;
+}
+
+th {
+    @include set-color("grey1", "background");
+    @include set-color("grey3", "border-top", "1px solid");
+}
+
+th,
+td {
+    font-weight: normal;
+    text-align: left;
+    padding: 0 .5*$spacing;
+    @include text-overflow();
+    @include set-color("grey3", "border-right", "1px solid");
+    @include set-color("grey3", "border-bottom", "1px solid");
+    &:first-child {
+        @include set-color("grey3", "border-left", "1px solid");
+    }
+}
+
+/* * End - Container */

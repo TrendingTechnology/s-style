@@ -1,0 +1,37 @@
+@import "~variables";
+
+@mixin transition($type : all) {
+  transition: 0.3s ease $type;
+}
+
+@mixin disabled($name : "neutral") {
+  &--disabled {
+    cursor: default;
+    opacity: 0.65;
+    pointer-events: none;
+    @include set-color($name, "background");
+  }
+}
+
+@mixin focus($type : outline) {
+  @if ($type == box-shadow) {
+    @include set-color("primary", "box-shadow", "0 0 0 1px");
+  }
+  @else if ($type == border) {
+    @include set-color("primary", "border", "1px solid");
+  } 
+  @else {
+    @include set-color("primary", "outline", "1px solid");
+  }
+}
+
+@mixin text-overflow() {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+@mixin set-color($name, $property, $pre :"", $post :"") {
+  #{$property}: unquote($pre + " " + map-get($colors, $name) + " " + $post);
+  #{$property}: unquote($pre + " var(--color-" + $name + ") " + $post);
+}

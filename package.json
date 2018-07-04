@@ -1,0 +1,39 @@
+{
+  "name": "s-style",
+  "description": "A Vue.js project",
+  "version": "0.0.1",
+  "author": "neelneelneel",
+  "license": "MIT",
+  "main": "dist/s-style.js",
+  "scripts": {
+    "build": "yarn run prod && yarn run docs",
+    "dev": "webpack-dev-server --open --config webpack.dev.js",
+    "prod": "webpack --progress --hide-modules --config webpack.prod.js",
+    "docs": "webpack --progress --hide-modules --config webpack.docs.js"
+  },
+  "dependencies": {
+    "@fortawesome/fontawesome-free": "~5.1.0",
+    "normalize.css": "~8.0.0",
+    "vue": "~2.5.16"
+  },
+  "devDependencies": {
+    "babel-core": "~6.26.0",
+    "babel-loader": "~7.1.4",
+    "babel-preset-env": "~1.6.1",
+    "babel-preset-stage-3": "~6.24.1",
+    "css-loader": "~0.28.11",
+    "eslint": "~4.19.1",
+    "eslint-plugin-html": "~4.0.3",
+    "eslint-plugin-vue": "~4.5.0",
+    "file-loader": "~1.1.11",
+    "node-sass": "~4.9.0",
+    "sass-loader": "~7.0.3",
+    "vue-loader": "~15.2.4",
+    "vue-router": "^3.0.1",
+    "vue-template-compiler": "~2.5.16",
+    "webpack": "~4.1.1",
+    "webpack-cli": "~2.0.12",
+    "webpack-dev-server": "~3.1.1",
+    "webpack-merge": "~4.1.2"
+  }
+}
