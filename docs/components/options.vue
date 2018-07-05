@@ -8,6 +8,7 @@
 
   &__content {
     padding: $spacing * 2;
+    margin: 0 0 $spacing * 2 0;
     width: 100%;
     @include set-color("grey3", "border-right", "1px solid");
     @include set-color("grey3", "border-bottom", "1px solid");
@@ -19,19 +20,21 @@
 <template>
   <div class="options">
     <h6> Options </h6>
-    <s-tabs :options="options" display="display" model="value" v-model="model"></s-tabs>
+    <s-tabs :options="options" v-model="model"></s-tabs>
     <div class="options__content">
       <s-scroll :staticY="true">
-        <p v-show="items[model].length === 0"> 
+        <p v-show="table[model].length === 0">
           There are no {{model}}
         </p>
-        <table v-show="items[model].length !== 0" class="options__table">
-          <tr v-for="(row, rowIdx) in items[model]" :key="rowIdx">
-            <th v-if="rowIdx === 0" v-for="(cell, cellIdx) in row" :key="cellIdx">
-              {{cell}}
+        <table v-show="table[model].length !== 0" class="options__table">
+          <tr>
+            <th v-for="(header, headerIdx) in tableHeaders[model]" :key="headerIdx">
+              {{header.title}}
             </th>
-            <td  v-if="rowIdx !== 0" v-for="(cell, cellIdx) in row" :key="cellIdx">
-              {{cell}}
+          </tr>
+          <tr v-for="(row, rowIdx) in table[model]" :key="rowIdx">
+            <td v-for="(header, headerIdx) in tableHeaders[model]" :key="headerIdx">
+              {{row[header.key]}}
             </td>
           </tr>
         </table>
@@ -56,23 +59,58 @@ export default {
   },
   data() {
     return {
-      model: "",
-      options: []
+      model: "Props",
+      options: ["Props", "Slots", "Events"],
+      tableHeaders: {
+        Props: [
+          { title: "Name", key: "name" },
+          { title: "Type", key: "type" },
+          { title: "Default", key: "default" },
+          { title: "Required", key: "required" },
+          { title: "Description", key: "description" }
+        ],
+        Slots: [
+          { title: "Name", key: "name" },
+          { title: "Scope", key: "scope" },
+          { title: "Description", key: "description" }
+        ],
+        Events: [
+          { title: "Name", key: "name" },
+          { title: "Parameters", key: "parameters" },
+          { title: "Description", key: "description" }
+        ]
+      },
+      table: {}
     };
   },
   created() {
-    this.options = [];
-    for (let option in this.items) {
-      if (this.items.hasOwnProperty(option)) {
-        this.options.push({
-          display: option,
-          value: option
-        });
-      }
-    }
+    //clear
+    this.table = {};
+    for (let item in this.items) {
+      if (this.items.hasOwnProperty(item)) {
+        // create the table
+        this.table[item] = [];
 
-    if (this.options.length > 0) {
-      this.model = this.options[0].value;
+        // check if defaults are defined
+        if (this.tableHeaders.hasOwnProperty(item)) {
+          for (let opt of this.items[item]) {
+            this.table[item].push(opt);
+          }
+
+          // sort
+          this.table[item].sort((a, b) => {
+            if (a.name < b.name) {
+              return -1;
+            }
+            if (a.name > b.name) {
+              return 1;
+            }
+            return 0;
+          });
+        } else {
+          console.warn("No defaults for " + item);
+        }
+      }
     }
   }
 };

@@ -3,15 +3,15 @@
 
 <template>
   <div>
-        <h3> Textarea </h3>
-        <p> Textareas are elements that allow a user to type and interact with the UI. They are better suited for situations where input is large (i.e: long address entries)</p>
-        <demo :code="textareaTemplate">
-          <s-textarea label="Textarea" v-model="textarea">
-          </s-textarea>
-          <s-textarea label="Disabled Textarea" :disabled="true" v-model="textarea">
-          </s-textarea>
-        </demo>
-        <options :items="textareaItems"></options>
+    <h3> Textarea </h3>
+    <p> Textareas are elements that allow a user to type and interact with the UI. They are better suited for situations where input is large (i.e: long address entries)</p>
+    <demo :code="textareaTemplate">
+      <s-textarea label="Textarea" v-model="textarea">
+      </s-textarea>
+      <s-textarea label="Disabled Textarea" :disabled="true" v-model="textarea">
+      </s-textarea>
+    </demo>
+    <options :items="textareaItems"></options>
   </div>
 </template>
 
@@ -45,33 +45,50 @@ export default {
       textarea: "Textarea",
       textareaItems: {
         Props: [
-          ["Name", "Type", "Default", "Required", "Description"],
-          ["label", "String", "", "", "Description of the element"],
-          [
-            "placeholder",
-            "String",
-            "Enter a value",
-            "",
-            "Placeholder given when v-model is empty"
-          ],
-          ["disabled", "Boolean", "false", "", "Disable interaction"],
-          ["v-model", "String", "", "Yes", "Bind data to the model"],
-          [
-            "textareaDelay",
-            "Number",
-            -1,
-            "",
-            "Time (ms) to delay before updating the model"
-          ]
+          {
+            name: "label",
+            type: "String",
+            default: "",
+            required: "",
+            description: "Description of the element"
+          },
+          {
+            name: "placeholder",
+            type: "String",
+            default: "Enter a value",
+            required: "",
+            description: "Placeholder given when v-model is empty"
+          },
+          {
+            name: "disabled",
+            type: "Boolean",
+            default: "false",
+            required: "",
+            description: "Disable interaction"
+          },
+          {
+            name: "v-model",
+            type: "*",
+            default: "",
+            required: "Yes",
+            description: "Bind data to the model"
+          },
+          {
+            name: "inputDelay",
+            type: "Number",
+            default: -1,
+            required: "",
+            description: "Time (ms) to delay before updating the model"
+          }
         ],
-        Slots: [["Name", "Scope", "Description"], ["", "", ""]],
+        Slots: [],
         Events: [
-          ["Name", "Parameters", "Description"],
-          [
-            "textarea",
-            "val (newly selected value), delta (change from previous state)",
-            "Triggered whenever the model is updated"
-          ]
+          {
+            name: "input",
+            scope:
+              "val (newly selected value), delta (change from previous state)",
+            description: "Triggered whenever the model is updated"
+          }
         ]
       }
     };

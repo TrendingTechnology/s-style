@@ -265,12 +265,23 @@ export default {
 </template>`,
       tooltipItems: {
         Props: [
-          ["Name", "Type", "Default", "Required", "Description"],
-          ["disabled", "Boolean", "false", "", "Disable interaction"],
-          ["position", "String", "s", "", "Default position of the tooltip"]
+          {
+            name: "disabled",
+            type: "Boolean",
+            default: "false",
+            required: "",
+            description: "Disable interaction"
+          },
+          {
+            name: "position",
+            type: "String",
+            default: "vertical",
+            required: "",
+            description: "Default position of the tooltip content"
+          }
         ],
-        Slots: [["Name", "Scope", "Description"], ["", "", ""]],
-        Events: [["Name", "Parameters", "Description"], ["", "", ""]]
+        Slots: [],
+        Events: []
       }
     };
   }

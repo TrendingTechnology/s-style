@@ -1,5 +1,5 @@
 <style lang="scss">
-@import '../theme.scss';
+@import "../theme.scss";
 
 .s-accordion {
   position: relative;
@@ -55,15 +55,13 @@ export default {
       const childrenLen = this.$children.length;
       for (let childIdx = 0; childIdx < childrenLen; childIdx++) {
         if (this.$children[childIdx].$options.name !== "s-accordion-item") {
-          console.error(
-            "Children of s-accordion must be s-accordion-item"
-          );
+          console.error("Children of s-accordion must be s-accordion-item");
           continue;
         }
 
         this.$children[childIdx].id = childIdx;
         this.$children[childIdx].rotated = this.rotated;
-        this.$children[childIdx].size = this.$children[childIdx].default;
+        this.$children[childIdx].size = this.$children[childIdx].initial;
       }
 
       this.setSize();

@@ -24,32 +24,32 @@
 
 <template>
   <div>
-        <h3> Scroll </h3>
-        <p> Scrolls wrap an element, emulating a scrollbar that is visible on hover.</p>
-        <demo :code="scrollTemplate">
-          <div class="scroll__outer">
-              <s-scroll :staticY="true">
-                  <div class="scroll__inner scroll__inner--width">
-                      Scroll Me Left and Right<br>             
-                  </div>
-              </s-scroll>
+    <h3> Scroll </h3>
+    <p> Scrolls wrap an element, emulating a scrollbar that is visible on hover.</p>
+    <demo :code="scrollTemplate">
+      <div class="scroll__outer">
+        <s-scroll :staticY="true">
+          <div class="scroll__inner scroll__inner--width">
+            Scroll Me Left and Right<br>
           </div>
-          <div class="scroll__outer">
-              <s-scroll :staticX="true">
-                  <div class="scroll__inner scroll__inner--height">
-                      Scroll Me Up and Down
-                  </div>
-              </s-scroll>
+        </s-scroll>
+      </div>
+      <div class="scroll__outer">
+        <s-scroll :staticX="true">
+          <div class="scroll__inner scroll__inner--height">
+            Scroll Me Up and Down
           </div>
-          <div class="scroll__outer">
-              <s-scroll>
-                  <div class="scroll__inner scroll__inner--width scroll__inner--height">
-                      Scroll Me All Around
-                  </div>
-              </s-scroll>
+        </s-scroll>
+      </div>
+      <div class="scroll__outer">
+        <s-scroll>
+          <div class="scroll__inner scroll__inner--width scroll__inner--height">
+            Scroll Me All Around
           </div>
-        </demo>
-        <options :items="scrollItems"></options>
+        </s-scroll>
+      </div>
+    </demo>
+    <options :items="scrollItems"></options>
   </div>
 </template>
 
@@ -112,16 +112,38 @@ export default {
     </s-scroll>
   </div>
 </template>`,
-      scroll: "scroll1",
       scrollItems: {
         Props: [
-          ["Name", "Type", "Default", "Required", "Description"],
-          ["disabled", "Boolean", "false", "", "Disable interaction"],
-          ["staticX", "Boolean", "false", "", "Disable the horizontal scroll"],
-          ["staticY", "Boolean", "false", "", "Disable the vertical scroll"]
+          {
+            name: "disabled",
+            type: "Boolean",
+            default: "false",
+            required: "",
+            description: "Disable interaction"
+          },
+          {
+            name: "staticX",
+            type: "Boolean",
+            default: "false",
+            required: "",
+            description: "Disable the horizontal scroll"
+          },
+          {
+            name: "staticY",
+            type: "Boolean",
+            default: "false",
+            required: "",
+            description: "Disable the vertical scroll"
+          }
         ],
-        Slots: [["Name", "Scope", "Description"], ["", "", "D"]],
-        Events: [["Name", "Parameters", "Description"], ["", "", ""]]
+        Slots: [
+          {
+            name: "",
+            scope: "",
+            description: "Main content to render"
+          }
+        ],
+        Events: []
       }
     };
   }

@@ -104,36 +104,45 @@ export default {
 <\/script>`,
       modalItems: {
         Props: [
-          ["Name", "Type", "Default", "Required", "Description"],
-          ["disabled", "Boolean", "false", "", "Disable interaction"],
-          [
-            "v-model",
-            "Boolean",
-            "true",
-            "",
-            "Shows/hides the modal based on truthiness"
-          ],
-          ["label", "String", "", "", "Label to render"],
-          [
-            "restricted",
-            "String",
-            "",
-            "",
-            "Restrict the modal to the nearest positioned ancestor "
-          ],
-          [
-            "force",
-            "Boolean",
-            "false",
-            "",
-            "User must select a section to close. Cannot close by clicking on the background or clicking on the close icon."
-          ]
+          {
+            name: "disabled",
+            type: "Boolean",
+            default: "false",
+            required: "",
+            description: "Disable interaction"
+          },
+          {
+            name: "v-model",
+            type: "Boolean",
+            default: "false",
+            required: "Yes",
+            description: "Shows/hides the modal based on truthiness"
+          },
+
+          {
+            name: "restricted",
+            type: "Boolean",
+            default: "false",
+            required: "",
+            description: "Restrict the modal to the nearest positioned ancestor"
+          },
+          {
+            name: "force",
+            type: "Boolean",
+            default: "false",
+            required: "",
+            description:
+              "User must select a section to close. Cannot close by clicking on the background or clicking on the close icon."
+          }
         ],
         Slots: [
-          ["Name", "Scope", "Description"],
-          ["", "", "View of the modal"]
+          {
+            name: "",
+            scope: "",
+            description: "Main content to render"
+          }
         ],
-        Events: [["Name", "Parameters", "Description"], ["", "", ""]]
+        Events: []
       }
     };
   }

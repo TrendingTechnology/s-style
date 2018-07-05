@@ -24,7 +24,7 @@
 <template>
   <div>
     <div class="s-label" v-if="label">{{label}}</div>
-    <input :tabindex="disabled ? -1 : 0" :placeholder="placeholder" :type="type"  v-model="computedValue" :disabled="disabled" v-bind:class="classObj">
+    <input :tabindex="disabled ? -1 : 0" :placeholder="placeholder" :type="type" v-model="computedValue" :disabled="disabled" v-bind:class="classObj">
   </div>
 </template>
 <script>
@@ -55,6 +55,10 @@ export default {
     }
   },
   props: {
+    placeholder: {
+      type: String,
+      default: "Enter a value"
+    },
     type: {
       type: String,
       default: "text"

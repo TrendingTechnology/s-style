@@ -2,20 +2,20 @@
 
 <template>
   <div>
-        <h3> Radio </h3>
-        <p> Radios are toggable elements that allow a user to select a value. They are better suited for situations where the user is making selections from a small group</p>
-        <demo :code="radioTemplate">
-          <s-radio label="Radio Label" val="radio1" v-model="radio">
-            Radio
-          </s-radio>
-          <s-radio label="Radio Label" val="radio2" :align="'right'" v-model="radio">
-            Right Radio
-          </s-radio>
-          <s-radio label="Radio Label" val="radio3" :disabled="true" v-model="radio">
-            Disabled Radio
-          </s-radio>
-        </demo>
-        <options :items="radioItems"></options>
+    <h3> Radio </h3>
+    <p> Radios are toggable elements that allow a user to select a value. They are better suited for situations where the user is making selections from a small group</p>
+    <demo :code="radioTemplate">
+      <s-radio label="Radio Label" val="radio1" v-model="radio">
+        Radio
+      </s-radio>
+      <s-radio label="Radio Label" val="radio2" :align="'right'" v-model="radio">
+        Right Radio
+      </s-radio>
+      <s-radio label="Radio Label" val="radio3" :disabled="true" v-model="radio">
+        Disabled Radio
+      </s-radio>
+    </demo>
+    <options :items="radioItems"></options>
   </div>
 </template>
 
@@ -54,34 +54,63 @@ export default {
       radio: "radio1",
       radioItems: {
         Props: [
-          ["Name", "Type", "Default", "Required", "Description"],
-          ["label", "String", "", "", "Description of the element"],
-          [
-            "align",
-            "String",
-            "left",
-            "",
-            "Align to the right or the left of the view"
-          ],
-          ["disabled", "Boolean", "false", "", "Disable interaction"],
-          ["val", "*", "", "Yes", "Value of the radio (when toggled)"],
-          ["v-model", "Boolean", "", "Yes", "Bind data to the model"],
-          [
-            "inputDelay",
-            "Number",
-            -1,
-            "",
-            "Time (ms) to delay before updating the model"
-          ]
+          {
+            name: "label",
+            type: "String",
+            default: "",
+            required: "",
+            description: "Description of the element"
+          },
+          {
+            name: "disabled",
+            type: "Boolean",
+            default: "false",
+            required: "",
+            description: "Disable interaction"
+          },
+          {
+            name: "v-model",
+            type: "*",
+            default: "",
+            required: "Yes",
+            description: "Bind data to the model"
+          },
+          {
+            name: "inputDelay",
+            type: "Number",
+            default: -1,
+            required: "",
+            description: "Time (ms) to delay before updating the model"
+          },
+          {
+            name: "align",
+            type: "String",
+            default: "",
+            required: "",
+            description: "Align the radio to the right or the left of the view"
+          },
+          {
+            name: "val",
+            type: "*",
+            default: "",
+            required: "Yes",
+            description: "Value of the radio (when toggled)"
+          }
         ],
-        Slots: [["Name", "Scope", "Description"], ["", "", "text of the view"]],
+        Slots: [
+          {
+            name: "",
+            scope: "",
+            description: "Manually set the view of the radio"
+          }
+        ],
         Events: [
-          ["Name", "Parameters", "Description"],
-          [
-            "input",
-            "val (newly selected value), delta (change from previous state)",
-            "Triggered whenever the model is updated"
-          ]
+          {
+            name: "input",
+            scope:
+              "val (newly selected value), delta (change from previous state)",
+            description: "Triggered whenever the model is updated"
+          }
         ]
       }
     };

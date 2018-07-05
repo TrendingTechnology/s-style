@@ -55,6 +55,10 @@ export default {
     }
   },
   props: {
+    placeholder: {
+      type: String,
+      default: "Enter a value"
+    },
     type: {
       type: String,
       default: "text"

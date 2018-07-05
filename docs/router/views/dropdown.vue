@@ -93,89 +93,118 @@ export default {
       dropdown2: 3,
       dropdownItems: {
         Props: [
-          ["Name", "Type", "Default", "Required", "Description"],
-          ["label", "String", "", "", "Description of the element"],
-          [
-            "placeholder",
-            "String",
-            "Select Dropdown",
-            "",
-            "Placeholder given when v-model is empty"
-          ],
-          ["disabled", "Boolean", "false", "", "Disable interaction"],
-          ["v-model", "*", "", "Yes", "Bind data to the model"],
-          [
-            "inputDelay",
-            "Number",
-            -1,
-            "",
-            "Time (ms) to delay before updating the model"
-          ],
-          [
-            "display",
-            "String",
-            "",
-            "",
-            "Displayed name in the form of 'a.b.c'"
-          ],
-          [
-            "model",
-            "String",
-            "",
-            "",
-            "Value to bind from options in the form of 'a.b.c'. Useful for 1-1 Mapping"
-          ],
-          ["options", "Array", "[]", "Yes", "Options to select from"],
-          ["loading", "Boolean", false, "", "Loading for the scroll or search"],
-          [
-            "searchDelay",
-            "Number",
-            -1,
-            "",
-            "Time (ms) to delay before searching the options"
-          ],
-          [
-            "search",
-            "Function",
-            "",
-            "",
-            "Search options using a custom function"
-          ],
-          [
-            "scroll",
-            "Function",
-            "",
-            "",
-            "Trigger function when the scroll is near the bottom"
-          ],
-          [
-            "position",
-            "String",
-            "vertical",
-            "",
-            "Default position of the dropdown"
-          ]
+          {
+            name: "label",
+            type: "String",
+            default: "",
+            required: "",
+            description: "Description of the element"
+          },
+          {
+            name: "placeholder",
+            type: "String",
+            default: "Select Dropdown",
+            required: "",
+            description: "Placeholder given when v-model is empty"
+          },
+          {
+            name: "disabled",
+            type: "Boolean",
+            default: "false",
+            required: "",
+            description: "Disable interaction"
+          },
+          {
+            name: "v-model",
+            type: "*",
+            default: "",
+            required: "Yes",
+            description: "Bind data to the model"
+          },
+          {
+            name: "inputDelay",
+            type: "Number",
+            default: -1,
+            required: "",
+            description: "Time (ms) to delay before updating the model"
+          },
+          {
+            name: "display",
+            type: "String",
+            default: "",
+            required: "",
+            description: "Displayed name in the form of 'a.b.c'"
+          },
+          {
+            name: "model",
+            type: "String",
+            default: "",
+            required: "",
+            description:
+              "Value to bind from options in the form of 'a.b.c'. Useful for 1-1 Mapping"
+          },
+          {
+            name: "options",
+            type: "Array",
+            default: "[]",
+            required: "Yes",
+            description: "Options to select from"
+          },
+          {
+            name: "loading",
+            type: "Boolean",
+            default: false,
+            required: "",
+            description: "Loading for the scroll and/or search"
+          },
+          {
+            name: "searchDelay",
+            type: "Number",
+            default: -1,
+            required: "",
+            description: "Time (ms) to delay before searching the options"
+          },
+          {
+            name: "search",
+            type: "Function",
+            default: "",
+            required: "",
+            description: "Search options using a custom function"
+          },
+          {
+            name: "scroll",
+            type: "Function",
+            default: "",
+            required: "",
+            description: "Trigger function when the scroll is near the bottom"
+          },
+          {
+            name: "position",
+            type: "String",
+            default: "vertical",
+            required: "",
+            description: "Default position of the dropdown content"
+          }
         ],
         Slots: [
-          ["Name", "Scope", "Description"],
-          [
-            "toggle",
-            "display (text of the toggle), value (selected value)",
-            "Update the view of the toggle"
-          ],
-          [
-            "item",
-            "item (rendered item)",
-            "Update the view of the dropdown items"
-          ]
+          {
+            name: "toggle",
+            scope: "display (text of the toggle), value (selected value)",
+            description: "Update the view of the dropdown toggle"
+          },
+          {
+            name: "item",
+            scope: "item (rendered item)",
+            description: "Update the view of the dropdown items"
+          }
         ],
         Events: [
-          ["Name", "Parameters", "Description"],
-          [
-            "input",
-            "val (newly selected value), delta (change from previous state)",
-            "Triggered whenever the model is updated"
-          ]
+          {
+            name: "input",
+            scope:
+              "val (newly selected value), delta (change from previous state)",
+            description: "Triggered whenever the model is updated"
+          }
         ]
       }
     };

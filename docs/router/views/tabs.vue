@@ -3,13 +3,13 @@
 
 <template>
   <div>
-        <h3> Tabs </h3>
-        <p> Tabs allow the user to quickly switch between options</p>
-        <demo :code="tabsTemplate">
-          <s-tabs label="Tabs" :options="tabsOptions" v-model="tabs">
-          </s-tabs>
-        </demo>
-        <options :items="tabsItems"></options>
+    <h3> Tabs </h3>
+    <p> Tabs allow the user to quickly switch between options</p>
+    <demo :code="tabsTemplate">
+      <s-tabs label="Tabs" :options="tabsOptions" v-model="tabs">
+      </s-tabs>
+    </demo>
+    <options :items="tabsItems"></options>
   </div>
 </template>
 
@@ -43,48 +43,65 @@ export default {
       tabs: 1,
       tabsItems: {
         Props: [
-          ["Name", "Type", "Default", "Required", "Description"],
-          ["label", "String", "", "", "Description of the element"],
-          [
-            "placeholder",
-            "String",
-            "Select Tabs",
-            "",
-            "Placeholder given when v-model is empty"
-          ],
-          ["disabled", "Boolean", "false", "", "Disable interaction"],
-          ["v-model", "*", "", "Yes", "Bind data to the model"],
-          [
-            "inputDelay",
-            "Number",
-            -1,
-            "",
-            "Time (ms) to delay before updating the model"
-          ],
-          [
-            "display",
-            "String",
-            "",
-            "",
-            "Displayed name in the form of 'a.b.c'"
-          ],
-          [
-            "model",
-            "String",
-            "",
-            "",
-            "Value to bind from options in the form of 'a.b.c'. Useful for 1-1 Mapping"
-          ],
-          ["options", "Array", "[]", "Yes", "Options to select from"]
+          {
+            name: "label",
+            type: "String",
+            default: "",
+            required: "",
+            description: "Description of the element"
+          },
+          {
+            name: "disabled",
+            type: "Boolean",
+            default: "false",
+            required: "",
+            description: "Disable interaction"
+          },
+          {
+            name: "v-model",
+            type: "*",
+            default: "",
+            required: "Yes",
+            description: "Selected tab"
+          },
+          {
+            name: "inputDelay",
+            type: "Number",
+            default: -1,
+            required: "",
+            description: "Time (ms) to delay before updating the model"
+          },
+          {
+            name: "display",
+            type: "String",
+            default: "",
+            required: "",
+            description: "Displayed name in the form of 'a.b.c'"
+          },
+          {
+            name: "model",
+            type: "String",
+            default: "",
+            required: "",
+            description:
+              "Value to bind from options in the form of 'a.b.c'. Useful for 1-1 Mapping"
+          },
+          {
+            name: "options",
+            type: "Array",
+            default: "[]",
+            required: "Yes",
+            description: "Tab options to select from"
+          }
         ],
-        Slots: [["Name", "Scope", "Description"], ["", "", ""]],
+        Slots: [],
         Events: [
-          ["Name", "Parameters", "Description"],
-          [
-            "input",
-            "val (newly selected value), delta (change from previous state)",
-            "Triggered whenever the model is updated"
-          ]
+          {
+            name: "input",
+            scope:
+              "val (newly selected value), delta (change from previous state)",
+            description: "Triggered whenever the model is updated"
+          }
         ]
       }
     };

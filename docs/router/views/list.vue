@@ -7,18 +7,18 @@
 
 <template>
   <div>
-        <h3> List </h3>
-        <p> Lists hold a collection of elements, but only render those taht are in the view</p>
-        <s-alert color="primary"> 
-          Note: Lists will try to fill the height of its parent container (height:100%. It may render incorrectly if the height is not set)
-        </s-alert>
-        <demo :code="listTemplate">
-          <div class="list">
-            <s-list label="List" :options="listOptions">
-            </s-list>
-          </div>
-        </demo>
-        <options :items="listItems"></options>
+    <h3> List </h3>
+    <p> Lists hold a collection of elements, but only render those taht are in the view</p>
+    <s-alert color="primary">
+      Note: Lists will try to fill the height of its parent container (height:100%. It may render incorrectly if the height is not set)
+    </s-alert>
+    <demo :code="listTemplate">
+      <div class="list">
+        <s-list label="List" :options="listOptions">
+        </s-list>
+      </div>
+    </demo>
+    <options :items="listItems"></options>
   </div>
 </template>
 
@@ -56,23 +56,43 @@ export default {
       })(),
       listItems: {
         Props: [
-          ["Name", "Type", "Default", "Required", "Description"],
-          ["disabled", "Boolean", "false", "", "Disable interaction"],
-          ["options", "Array", "[]", "Yes", "Options to select from"],
-          ["loading", "Boolean", false, "", "Loading for the scroll"],
-          [
-            "scroll",
-            "Function",
-            "",
-            "",
-            "Trigger function when the scroll is near the bottom"
-          ]
+          {
+            name: "disabled",
+            type: "Boolean",
+            default: "false",
+            required: "",
+            description: "Disable interaction"
+          },
+          {
+            name: "options",
+            type: "Array",
+            default: "[]",
+            required: "Yes",
+            description: "Options to render"
+          },
+          {
+            name: "loading",
+            type: "Boolean",
+            default: false,
+            required: "",
+            description: "Loading for the scroll"
+          },
+          {
+            name: "scroll",
+            type: "Function",
+            default: "",
+            required: "",
+            description: "Trigger function when the scroll is near the bottom"
+          }
         ],
         Slots: [
-          ["Name", "Scope", "Description"],
-          ["", "", "Update the view of the list items"]
+          {
+            name: "",
+            scope: "item (rendered item)",
+            description: "Update the view of the list items"
+          }
         ],
-        Events: [["Name", "Parameters", "Description"], ["", "", ""]]
+        Events: []
       }
     };
   }

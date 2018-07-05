@@ -59,7 +59,7 @@
 </style>
 <template>
   <div :tabindex="disabled ? -1 : 0" :disabled="disabled" v-bind:class="classObj">
-    <slot v-bind="{image, text}">
+    <slot>
       <div class="s-block__image">
         <img v-bind:src="image">
       </div>

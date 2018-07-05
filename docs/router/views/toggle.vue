@@ -2,15 +2,15 @@
 
 <template>
   <div>
-        <h3> Toggle </h3>
-        <p> Toggles are toggable elements that allow a user to select a value. They are better suited for situations where the user is making selections from a small group</p>
-        <demo :code="toggleTemplate">
-          <s-toggle label="Toggle Label" v-model="toggle">
-          </s-toggle>
-          <s-toggle label="Toggle Label" :disabled="true" v-model="toggle">
-          </s-toggle>
-        </demo>
-        <options :items="toggleItems"></options>
+    <h3> Toggle </h3>
+    <p> Toggles are toggable elements that allow a user to select a value. They are better suited for situations where the user is making selections from a small group</p>
+    <demo :code="toggleTemplate">
+      <s-toggle label="Toggle Label" v-model="toggle">
+      </s-toggle>
+      <s-toggle label="Toggle Label" :disabled="true" v-model="toggle">
+      </s-toggle>
+    </demo>
+    <options :items="toggleItems"></options>
   </div>
 </template>
 
@@ -46,26 +46,43 @@ export default {
       toggle: true,
       toggleItems: {
         Props: [
-          ["Name", "Type", "Default", "Required", "Description"],
-          ["label", "String", "", "", "Description of the element"],
-          ["disabled", "Boolean", "false", "", "Disable interaction"],
-          ["v-model", "Boolean", "", "Yes", "Bind data to the model"],
-          [
-            "inputDelay",
-            "Number",
-            -1,
-            "",
-            "Time (ms) to delay before updating the model"
-          ]
+          {
+            name: "label",
+            type: "String",
+            default: "",
+            required: "",
+            description: "Description of the element"
+          },
+          {
+            name: "disabled",
+            type: "Boolean",
+            default: "false",
+            required: "",
+            description: "Disable interaction"
+          },
+          {
+            name: "v-model",
+            type: "Boolean",
+            default: "",
+            required: "Yes",
+            description: "Bind data to the model"
+          },
+          {
+            name: "inputDelay",
+            type: "Number",
+            default: -1,
+            required: "",
+            description: "Time (ms) to delay before updating the model"
+          }
         ],
-        Slots: [["Name", "Scope", "Description"], ["", "", ""]],
+        Slots: [],
         Events: [
-          ["Name", "Parameters", "Description"],
-          [
-            "input",
-            "val (newly selected value), delta (change from previous state)",
-            "Triggered whenever the model is updated"
-          ]
+          {
+            name: "input",
+            scope:
+              "val (newly selected value), delta (change from previous state)",
+            description: "Triggered whenever the model is updated"
+          }
         ]
       }
     };

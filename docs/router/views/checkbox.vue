@@ -54,33 +54,57 @@ export default {
       checkbox: true,
       checkboxItems: {
         Props: [
-          ["Name", "Type", "Default", "Required", "Description"],
-          ["label", "String", "", "", "Description of the element"],
-          [
-            "align",
-            "String",
-            "left",
-            "",
-            "Align to the right or the left of the view"
-          ],
-          ["disabled", "Boolean", "false", "", "Disable interaction"],
-          ["v-model", "Boolean", "", "Yes", "Bind data to the model"],
-          [
-            "inputDelay",
-            "Number",
-            -1,
-            "",
-            "Time (ms) to delay before updating the model"
-          ]
+          {
+            name: "label",
+            type: "String",
+            default: "",
+            required: "",
+            description: "Description of the element"
+          },
+          {
+            name: "disabled",
+            type: "Boolean",
+            default: "false",
+            required: "",
+            description: "Disable interaction"
+          },
+          {
+            name: "v-model",
+            type: "*",
+            default: "",
+            required: "Yes",
+            description: "Bind data to the model"
+          },
+          {
+            name: "inputDelay",
+            type: "Number",
+            default: -1,
+            required: "",
+            description: "Time (ms) to delay before updating the model"
+          },
+          {
+            name: "align",
+            type: "String",
+            default: "",
+            required: "",
+            description:
+              "Align the checkbox to the right or the left of the view"
+          }
         ],
-        Slots: [["Name", "Scope", "Description"], ["", "", "text of the view"]],
+        Slots: [
+          {
+            name: "",
+            scope: "",
+            description: "Manually set the view of the checkbox"
+          }
+        ],
         Events: [
-          ["Name", "Parameters", "Description"],
-          [
-            "input",
-            "val (newly selected value), delta (change from previous state)",
-            "Triggered whenever the model is updated"
-          ]
+          {
+            name: "input",
+            scope:
+              "val (newly selected value), delta (change from previous state)",
+            description: "Triggered whenever the model is updated"
+          }
         ]
       }
     };

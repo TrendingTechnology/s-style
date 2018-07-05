@@ -6,10 +6,6 @@ const Input = {
       type: String,
       value: ""
     },
-    placeholder: {
-      type: String,
-      default: "Enter a value"
-    },
     disabled: {
       type: Boolean,
       default: false

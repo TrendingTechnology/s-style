@@ -140,15 +140,11 @@
   }
 }
 
-.s-accordion
-  > .s-accordion-item:first-child
-  .s-accordion-item__resizer {
+.s-accordion > .s-accordion-item:first-child .s-accordion-item__resizer {
   display: none;
 }
 
-.s-accordion
-  > .s-accordion-item:first-child
-  .s-accordion-item__header__spacer {
+.s-accordion > .s-accordion-item:first-child .s-accordion-item__header__spacer {
   cursor: default;
 }
 </style>
@@ -158,7 +154,9 @@
     <div class="s-accordion-item__header" v-on:click="fullSize($event)" v-bind:class="{'s-accordion-item__header--opened':(size > 0),'s-accordion-item__header--rotated':rotated}">
       <div class="s-accordion-item__header__spacer" v-on:mousedown="startManualSize($event)" v-bind:class="{'s-accordion-item__header__spacer--rotated':rotated}"></div>
       <div class="s-accordion-item__header__text" v-bind:class="{'s-accordion-item__header__text--rotated':rotated}">
-        <span><slot name="header"></slot></span>
+        <span>
+          <slot name="header"></slot>
+        </span>
       </div>
     </div>
     <div class="s-accordion-item__content" v-if="size > 0" v-bind:class="{'s-accordion-item__content--rotated':rotated}">
@@ -184,7 +182,7 @@ export default {
       type: Boolean,
       default: false
     },
-    default: {
+    initial: {
       type: Number,
       default: 0
     }
