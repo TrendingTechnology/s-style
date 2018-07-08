@@ -17,7 +17,6 @@
   &__option {
     display: block;
     margin: 0;
-    padding: 0 $scroll-size;
     width: 100%;
     overflow: hidden;
   }
@@ -25,7 +24,7 @@
 </style>
 <template>
   <div v-bind:class="classObj">
-    <s-scroll ref="scroll" :staticX="true" :scrollY="scrollList">
+    <s-scroll ref="scroll" :staticX="true" :gutter="true" :scrollY="scrollList">
       <div class="s-list__background" v-bind:style="{height: virtualHeight + 'px'}">
         <div ref="view" v-bind:style="{paddingTop:virtualTop + 'px', paddingBottom:virtualBottom + 'px'}">
           <div class="s-list__option" v-for="v in virtualNodes" :key="v.key">

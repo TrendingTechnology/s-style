@@ -25,7 +25,6 @@
     right: 0;
     bottom: 0;
     left: 176px;
-    padding: $spacing;
   }
 }
 </style>
@@ -34,18 +33,18 @@
   <div class="app">
     <div class="app__alert">
       <transition-group name="s-fade" tag="div">
-        <s-alert v-for="alert in alerts" :key="alert.id" :color="alert.color" :text="alert.text" v-model="alert.open"  :closeable="true"></s-alert>
+        <s-alert v-for="alert in alerts" :key="alert.id" :color="alert.color" :text="alert.text" v-model="alert.open" :closeable="true"></s-alert>
       </transition-group>
     </div>
     <div class="app__sidebar">
       <sidebar></sidebar>
     </div>
     <div class="app__content">
-      <s-scroll :staticX="true">
+      <s-scroll :gutter="true" :staticX="true">
         <router-view></router-view>
       </s-scroll>
     </div>
-   </div>
+  </div>
 </template>
 
 <script>

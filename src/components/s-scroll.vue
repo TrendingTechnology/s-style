@@ -14,15 +14,30 @@
     }
   }
 
+  &--gutter-x {
+    > .s-scroll__scroller {
+      padding-top: $scroll-size;
+      padding-bottom: $scroll-size;
+    }
+  }
+
+  &--gutter-y {
+    > .s-scroll__scroller {
+      padding-left: $scroll-size;
+      padding-right: $scroll-size;
+    }
+  }
+
   &__scroller {
+    position: relative;
     height: calc(100% + 17px);
     width: calc(100% + 17px);
     overflow-x: scroll;
     overflow-y: scroll;
 
     & ::-webkit-scrollbar {
-      height: 17px !important;
-      width: 17px !important;
+      height: 17px;
+      width: 17px;
     }
   }
 
@@ -88,7 +103,9 @@ export default {
     classObj: function() {
       const classObj = {
         "s-scroll": true,
-        "s-scroll--disabled": this.disabled
+        "s-scroll--disabled": this.disabled,
+        "s-scroll--gutter-x": this.gutter && !this.staticX,
+        "s-scroll--gutter-y": this.gutter && !this.staticY
       };
 
       return classObj;
@@ -98,6 +115,8 @@ export default {
     return {
       showY: false,
       showX: false,
+      scrollBarWidth: 0,
+      scrollBarHeight: 0,
       scrollHeight: undefined,
       scrollWidth: undefined,
       containerHeight: undefined,
@@ -128,6 +147,10 @@ export default {
       default: false
     },
     staticX: {
+      type: Boolean,
+      default: false
+    },
+    gutter: {
       type: Boolean,
       default: false
     }
@@ -171,7 +194,10 @@ export default {
       this.containerHeight = this.$el.offsetHeight;
 
       //hide
-      if (this.containerHeight >= this.scrollHeight) {
+      if (
+        this.containerHeight >= this.scrollHeight ||
+        this.scrollBarWidth === 0
+      ) {
         this.showY = false;
         return;
       }
@@ -334,14 +360,16 @@ export default {
       this.containerWidth = this.$el.offsetWidth;
 
       //hide
-      if (this.containerWidth >= this.scrollWidth) {
+      if (
+        this.containerWidth >= this.scrollWidth ||
+        this.scrollBarHeight === 0
+      ) {
         this.showX = false;
         return;
       }
 
       //show
       this.showX = true;
-      this.$refs.trackX.style.display = "block";
       this.sizeThumbX();
       this.positionThumbX();
     },
@@ -528,15 +556,18 @@ export default {
     this.buildScroll();
   },
   mounted() {
+    this.scrollBarHeight = Utility.constants.scrollBarHeight;
+    this.scrollBarWidth = Utility.constants.scrollBarWidth;
+
     // set the container
-    if (Utility.constants.scrollBarWidth !== 17) {
+    if (this.scrollBarWidth !== 17) {
       this.$refs.scroller.style.width =
-        "calc(100% + " + Utility.constants.scrollBarWidth + "px)";
+        "calc(100% + " + this.scrollBarWidth + "px)";
     }
 
-    if (Utility.constants.scrollBarHeight !== 17) {
+    if (this.scrollBarHeight !== 17) {
       this.$refs.scroller.style.height =
-        "calc(100% + " + Utility.constants.scrollBarHeight + "px)";
+        "calc(100% + " + this.scrollBarHeight + "px)";
     }
 
     window.addEventListener("resize", this.buildScroll);

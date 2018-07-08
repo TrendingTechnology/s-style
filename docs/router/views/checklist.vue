@@ -20,7 +20,7 @@
     </demo>
     <demo :code="checklist2Template">
       <div class="checklist">
-        <s-checklist label="Checklist" :options="checklist2Options" v-model="checklist2">
+        <s-checklist label="Checklist" :options="checklist2Options" :multiple="true" v-model="checklist2">
           <template slot-scope="item">
             List {{item.display}}
           </template>
@@ -61,7 +61,7 @@ export default {
       checklist1: 10,
       checklist2Template: `
 <template>
-  <s-checklist label="Checklist" :options="options" v-model="model">
+  <s-checklist label="Checklist" :options="options" :multiple="true" v-model="model">
     <template slot-scope="item">
       List {{item.display}}
     </template>
@@ -72,13 +72,13 @@ export default {
     data(){
       return{
         options:[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
-        model: 10
+        model: [10]
       }
     }
   }
 <\/script>`,
       checklist2Options: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
-      checklist2: 10,
+      checklist2: [10],
       checklistItems: {
         Props: [
           {

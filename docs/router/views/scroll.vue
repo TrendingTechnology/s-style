@@ -134,6 +134,13 @@ export default {
             default: "false",
             required: "",
             description: "Disable the vertical scroll"
+          },
+          {
+            name: "gutter",
+            type: "Boolean",
+            default: "false",
+            required: "",
+            description: "Add a gutter for the scrollbar to sit in"
           }
         ],
         Slots: [
