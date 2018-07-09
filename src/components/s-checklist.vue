@@ -6,6 +6,7 @@
   height: 100%;
   overflow: hidden;
   @include disabled();
+  @include set-color("neutral", "background");
 
   &__holder {
     position: relative;
@@ -71,7 +72,7 @@
       <div class="s-checklist__list" v-bind:class="{'s-checklist__list--single':((searchable && !multiple) || (!searchable && multiple)), 's-checklist__list--double':(searchable && multiple)}">
         <s-list ref="list" :scroll="scroll" :loading="loading" :options="rendered">
           <template slot-scope="item">
-            <s-checkbox align="right" v-on:input="changeChecklist(item.value)" v-model="item.selected">
+            <s-checkbox v-bind:title="item.display" align="right" v-on:input="changeChecklist(item.value)" v-model="item.selected">
               <slot v-bind="item">
                 {{item.display}}
               </slot>
@@ -166,7 +167,7 @@ export default {
      */
     isAllSelected() {
       if (this.multiple) {
-        if (typeof this.selectAll !== "undefined") {
+        if (Utility.helpers.isDefined(this.selectAll)) {
           this.viewSelectAll = this.selectAll;
         } else {
           // verify viewSelectAll by looking at all of the options and see if model contains all of them

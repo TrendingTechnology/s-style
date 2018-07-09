@@ -43,20 +43,20 @@
       top: 0;
       bottom: 0;
       right: $scroll-size;
-      font-size: 0.75em;
+      font-size: 0.875em;
       @include set-color("grey4", "color");
     }
   }
 
   &__content {
     position: absolute;
-    @include set-color("neutral", "background");
+    z-index: 1000;
     @include transition(opacity);
-  }
 
-  &__checklist {
-    width: 100%;
-    height: 200px;
+    &__holder {
+      width: 100%;
+      height: 200px;
+    }
   }
 }
 </style>
@@ -74,7 +74,7 @@
       </span>
     </div>
     <div class="s-dropdown__content" ref="content">
-      <div class="s-dropdown__checklist" v-bind:style="{width: contentWidth + 'px'}">
+      <div class="s-dropdown__content__holder" v-bind:style="{width: contentWidth + 'px'}">
         <s-checklist ref="checklist" v-if="popoverVisible" :display="display" :model="model" :searchable="true" :search="search" :searchDelay="searchDelay" :multiple="false" :disabled="disabled" :loading="loading" :scroll="scroll" :options="options" v-on:input="updateChecklist" :value="computedValue">
           <template slot-scope="item">
             <slot v-bind="item" name="item">

@@ -5,12 +5,106 @@ function Utility() {
             isEqual: isEqual,
             isEmpty: isEmpty,
             isDefined: isDefined,
+            isDate: isDate,
+            isLeapYear: isLeapYear,
             convert: convert,
             clean: clean
         },
         constants: {
             scrollBarWidth: 'undefined',
-            scrollBarHeight: 'undefined'
+            scrollBarHeight: 'undefined',
+            month: [
+                {
+                    name: "January",
+                    abbreviation: "Jan",
+                    length: 31
+                },
+                {
+                    name: "February",
+                    abbreviation: "Feb",
+                    length: 28
+                },
+                {
+                    name: "March",
+                    abbreviation: "Mar",
+                    length: 31
+                },
+                {
+                    name: "April",
+                    abbreviation: "Apr",
+                    length: 30
+                },
+                {
+                    name: "May",
+                    abbreviation: "May",
+                    length: 31
+                },
+                {
+                    name: "June",
+                    abbreviation: "Jun",
+                    length: 30
+                },
+                {
+                    name: "July",
+                    abbreviation: "Jul",
+                    length: 31
+                },
+                {
+                    name: "August",
+                    abbreviation: "Aug",
+                    length: 31
+                },
+                {
+                    name: "September",
+                    abbreviation: "Sep",
+                    length: 30
+                },
+                {
+                    name: "October",
+                    abbreviation: "Oct",
+                    length: 31
+                },
+                {
+                    name: "November",
+                    abbreviation: "Nov",
+                    length: 30
+                },
+                {
+                    name: "December",
+                    abbreviation: "Dec",
+                    length: 31
+                }
+            ],
+            week: [
+                {
+                    name: "Sunday",
+                    abbreviation: "Su"
+                },
+                {
+                    name: "Monday",
+                    abbreviation: "Mo"
+                },
+                {
+                    name: "Tuesday",
+                    abbreviation: "Tu"
+                },
+                {
+                    name: "Wednesday",
+                    abbreviation: "We"
+                },
+                {
+                    name: "Thursday",
+                    abbreviation: "Th"
+                },
+                {
+                    name: "Friday",
+                    abbreviation: "Fr"
+                },
+                {
+                    name: "Saturday",
+                    abbreviation: "Sa"
+                }
+            ]
         }
     }
 
@@ -87,6 +181,26 @@ function Utility() {
      */
     function isDefined(a) {
         return !(a === undefined)
+    }
+
+    /**
+     * @name isDate
+     * @param {Date} d  - date to check
+     * @desc check if passed in value is a valid date
+     * @returns {boolean} truthy value if the passed in item is a valid date object
+     */
+    function isDate(d) {
+        return !(Object.prototype.toString.call(d) !== "[object Date]" || isNaN(d.getTime()))
+    }
+
+    /**
+     * @name isLeapYear
+     * @param {number} y  - year to check
+     * @desc check if passed in value is a leap year
+     * @returns {boolean} truthy value if the passed in item is a leap year
+     */
+    function isLeapYear(y) {
+        return ((y % 4 == 0) && (y % 100 != 0)) || (y % 400 == 0);
     }
 
     /**

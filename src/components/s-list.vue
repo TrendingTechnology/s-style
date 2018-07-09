@@ -29,7 +29,7 @@
         <div ref="view" v-bind:style="{paddingTop:virtualTop + 'px', paddingBottom:virtualBottom + 'px'}">
           <div class="s-list__option" v-for="v in virtualNodes" :key="v.key">
             <slot v-bind="v.data">
-              <div class="s-text">
+              <div v-bind:title="v.data" class="s-text">
                 {{v.data}}
               </div>
             </slot>

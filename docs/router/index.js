@@ -14,6 +14,7 @@ import block from './views/block.vue'
 import button from './views/button.vue'
 import checkbox from './views/checkbox.vue'
 import checklist from './views/checklist.vue'
+import datepicker from './views/datepicker.vue'
 import dropdown from './views/dropdown.vue'
 import input from './views/input.vue'
 import list from './views/list.vue'
@@ -95,6 +96,11 @@ export default new VueRouter({
           name: 'Checklist',
           path: 'checklist',
           component: checklist
+        },
+        {
+          name: 'Datepicker',
+          path: 'datepicker',
+          component: datepicker
         },
         {
           name: 'Dropdown',
