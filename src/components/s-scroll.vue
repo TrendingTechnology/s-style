@@ -34,11 +34,6 @@
     width: calc(100% + 17px);
     overflow-x: scroll;
     overflow-y: scroll;
-
-    & ::-webkit-scrollbar {
-      height: 17px;
-      width: 17px;
-    }
   }
 
   &__track {

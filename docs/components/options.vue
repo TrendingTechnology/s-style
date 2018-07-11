@@ -10,6 +10,7 @@
     padding: $spacing * 2;
     margin: 0 0 $spacing * 2 0;
     width: 100%;
+    overflow: auto;
     @include set-color("grey3", "border-right", "1px solid");
     @include set-color("grey3", "border-bottom", "1px solid");
     @include set-color("grey3", "border-left", "1px solid");
@@ -22,23 +23,21 @@
     <h6> Options </h6>
     <s-tabs :options="options" v-model="model"></s-tabs>
     <div class="options__content">
-      <s-scroll :staticY="true">
-        <p v-show="table[model].length === 0">
-          There are no {{model}}
-        </p>
-        <table v-show="table[model].length !== 0" class="options__table">
-          <tr>
-            <th v-for="(header, headerIdx) in tableHeaders[model]" :key="headerIdx">
-              {{header.title}}
-            </th>
-          </tr>
-          <tr v-for="(row, rowIdx) in table[model]" :key="rowIdx">
-            <td v-for="(header, headerIdx) in tableHeaders[model]" :key="headerIdx">
-              {{row[header.key]}}
-            </td>
-          </tr>
-        </table>
-      </s-scroll>
+      <p v-show="table[model].length === 0">
+        There are no {{model}}
+      </p>
+      <table v-show="table[model].length !== 0" class="options__table">
+        <tr>
+          <th v-for="(header, headerIdx) in tableHeaders[model]" :key="headerIdx">
+            {{header.title}}
+          </th>
+        </tr>
+        <tr v-for="(row, rowIdx) in table[model]" :key="rowIdx">
+          <td v-for="(header, headerIdx) in tableHeaders[model]" :key="headerIdx">
+            {{row[header.key]}}
+          </td>
+        </tr>
+      </table>
     </div>
   </div>
 </template>

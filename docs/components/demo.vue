@@ -18,13 +18,14 @@
 
   &__block {
     position: relative;
+    width: 100%;
+    overflow: auto;
     @include set-color("grey1", "background");
     @include set-color("grey3", "border", "1px solid");
 
     &__copy {
       position: absolute;
-      top: $spacing;
-      right: $spacing;
+      right: $spacing * 3;
       z-index: 1;
       font-size: 0.875em;
       cursor: pointer;
@@ -53,15 +54,13 @@
     <div class="demo__content" v-bind:class="{'demo__content--code': code}">
       <slot></slot>
       <div class="s-clear"></div>
+      <div class="demo__block__copy" v-show="open" v-on:click="copy()">Copy</div>
       <div class="demo__block" v-if="code" v-show="open">
-        <div class="demo__block__copy" v-on:click="copy()">Copy</div>
-        <s-scroll :staticY="true" v-if="open">
-          <pre>
+        <pre>
             <code class="demo__code">
                 {{code}}
             </code>
           </pre>
-        </s-scroll>
       </div>
     </div>
     <s-button v-if="code" v-on:click.native="open = !open" class="demo__button"> {{open ? 'Hide' : 'Show'}} Code </s-button>

@@ -25,6 +25,7 @@
     right: 0;
     bottom: 0;
     left: 176px;
+    padding: $spacing;
   }
 }
 </style>
@@ -40,9 +41,7 @@
       <sidebar></sidebar>
     </div>
     <div class="app__content">
-      <s-scroll :gutter="true" :staticX="true">
-        <router-view></router-view>
-      </s-scroll>
+      <router-view></router-view>
     </div>
   </div>
 </template>

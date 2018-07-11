@@ -3,7 +3,7 @@ const merge = require('webpack-merge');
 const common = require('./webpack.common.js');
 
 module.exports = merge(common, {
-  entry: './docs/index.js',
+  entry: ['babel-polyfill','./docs/index.js'],
   output: {
     path: path.resolve(__dirname, './docs/dist'),
     publicPath: '/dist/',

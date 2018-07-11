@@ -26,6 +26,9 @@
   <div>
     <h3> Scroll </h3>
     <p> Scrolls wrap an element, emulating a scrollbar that is visible on hover.</p>
+    <s-alert color="primary">
+      Note: Scrolls must have a defined width and height.
+    </s-alert>
     <demo :code="scrollTemplate">
       <div class="scroll__outer">
         <s-scroll :staticY="true">

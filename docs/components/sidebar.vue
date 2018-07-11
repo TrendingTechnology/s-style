@@ -31,6 +31,7 @@
     right: 0;
     bottom: 0;
     left: 0;
+    overflow: auto;
 
     &__label {
       font-size: 1em;
@@ -82,16 +83,14 @@
       simple-style
     </router-link>
     <div class="sidebar__menu">
-      <s-scroll :staticX="true">
-        <div v-if="route.name" v-for="(route, index) in routes" :key="index">
-          <div class="sidebar__menu__label">
-            {{route.name}}
-          </div>
-          <router-link class="sidebar__menu__item" v-for="(routeChild, index) in route.children" :key="index" :to="routeChild.path">
-            {{routeChild.name}}
-          </router-link>
+      <div v-if="route.name" v-for="(route, index) in routes" :key="index">
+        <div class="sidebar__menu__label">
+          {{route.name}}
         </div>
-      </s-scroll>
+        <router-link class="sidebar__menu__item" v-for="(routeChild, index) in route.children" :key="index" :to="routeChild.path">
+          {{routeChild.name}}
+        </router-link>
+      </div>
     </div>
   </div>
 </template>
