@@ -17,7 +17,7 @@ yarn add simple-style
 ## Backlog
 * [ ] New features
     * [x] Overlay
-    * [ ] Datepicker
+    * [x] Datepicker
     * [ ] Numberpicker
     * [ ] File drag and drop / upload
     * [ ] Layout and Container CSS
