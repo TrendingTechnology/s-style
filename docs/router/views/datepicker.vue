@@ -8,6 +8,11 @@
     <demo :code="datepickerTemplate">
       <s-datepicker label="Datepicker" v-model="datepicker">
       </s-datepicker>
+      <s-datepicker label="Datepicker" v-model="datepicker">
+        <template slot-scope="date">
+          {{date.fullDate}}
+        </template>
+      </s-datepicker>
     </demo>
     <options :items="datepickerItems"></options>
   </div>
@@ -28,27 +33,22 @@ export default {
 <template>
   <s-datepicker label="Datepicker" v-model="datepicker">
   </s-datepicker>
+  <s-datepicker label="Datepicker" v-model="datepicker">
+    <template slot-scope="date">
+      {{date.fullDate}}
+    </template>
+  </s-datepicker>
 </template>
 <script>
   export default {
     data(){
       return{
-        datepicker:'Datepicker'
+        datepicker: new Date()
       }
     }
   }
 <\/script>`,
-      datepicker: (function() {
-        var current = new Date();
-        return (
-          current.getMonth() +
-          1 +
-          "/" +
-          current.getDate() +
-          "/" +
-          current.getFullYear()
-        );
-      })(),
+      datepicker: new Date(),
       datepickerItems: {
         Props: [
           {
@@ -74,10 +74,10 @@ export default {
           },
           {
             name: "v-model",
-            type: "String",
+            type: "Date",
             default: "",
             required: "Yes",
-            description: "Bind data to the model. Must be a valid date string"
+            description: "Bind data to the model. Must be a valid date object"
           },
           {
             name: "inputDelay",
@@ -87,7 +87,13 @@ export default {
             description: "Time (ms) to delay before updating the model"
           }
         ],
-        Slots: [],
+        Slots: [
+           {
+            name: "",
+            scope: "value (raw value), shortDate (date in the form of MM/DD/YYYY), fullDate (date in the form of Month Day, Year)",
+            description: "Manually set the view of the datepicker"
+          }
+        ],
         Events: [
           {
             name: "input",

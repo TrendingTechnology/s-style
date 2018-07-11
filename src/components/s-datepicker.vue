@@ -164,9 +164,9 @@
   <div>
     <div class="s-label" v-if="label">{{label}}</div>
     <div ref="target" :tabindex="disabled ? -1 : 0" v-on:keyup.enter="toggleContent()" v-bind:class="classObj">
-      <div class="s-datepicker__toggle__text">
-        <slot v-bind="{value:computedValue}">
-          {{computedValue}}
+      <div class="s-datepicker__toggle__text" :title="computedFullDate">
+        <slot v-bind="{value:computedValue, shortDate:computedShortDate, fullDate:computedFullDate}">
+          {{computedShortDate}}
         </slot>
       </div>
       <span class="s-datepicker__toggle__mark">
@@ -235,6 +235,31 @@ export default {
     },
     computedValue: function() {
       return this.value;
+    },
+    computedShortDate: function() {
+      let month = this.value.getMonth();
+
+      Utility.constants.month[month].abbreviation;
+
+      return (
+        this.value.getMonth() +
+        1 +
+        "/" +
+        this.value.getDate() +
+        "/" +
+        this.value.getFullYear()
+      );
+    },
+    computedFullDate: function() {
+      let month = this.value.getMonth();
+
+      return (
+        Utility.constants.month[month].name +
+        " " +
+        this.value.getDate() +
+        ", " +
+        this.value.getFullYear()
+      );
     }
   },
   props: {
@@ -318,20 +343,22 @@ export default {
      * @returns {void}
      */
     buildPicker() {
-      let date = new Date(this.value);
+      let val = this.value;
+
+      console.log(this.value);
 
       // if the date is not valid set it to today's date
-      if (!Utility.helpers.isDate(date)) {
+      if (!Utility.helpers.isDate(val)) {
         console.error("Not valid");
-        date = new Date();
+        val = new Date();
       } else {
-        this.day = date.getDate();
-        this.month = date.getMonth();
-        this.year = date.getFullYear();
+        this.day = val.getDate();
+        this.month = val.getMonth();
+        this.year = val.getFullYear();
       }
 
-      this.renderedMonth = date.getMonth();
-      this.renderedYear = date.getFullYear();
+      this.renderedMonth = val.getMonth();
+      this.renderedYear = val.getFullYear();
 
       this.renderLevel();
     },
@@ -571,12 +598,13 @@ export default {
         Utility.helpers.isDefined(this.day) &&
         Utility.helpers.isDefined(this.year)
       ) {
-        let val = this.month + 1 + "/" + this.day + "/" + this.year;
-
-        this.input(val, {
-          type: "replace",
-          value: val
-        });
+        let val = new Date(this.year, this.month, this.day);
+        if (Utility.helpers.isDate(val)) {
+          this.input(val, {
+            type: "replace",
+            value: val
+          });
+        }
       }
     }
   },
