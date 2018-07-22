@@ -16,6 +16,7 @@ import checkbox from './views/checkbox.vue'
 import checklist from './views/checklist.vue'
 import datepicker from './views/datepicker.vue'
 import dropdown from './views/dropdown.vue'
+import file from './views/file.vue'
 import input from './views/input.vue'
 import list from './views/list.vue'
 import modal from './views/modal.vue'
@@ -106,6 +107,11 @@ export default new VueRouter({
           name: 'Dropdown',
           path: 'dropdown',
           component: dropdown
+        },
+        {
+          name: 'File',
+          path: 'file',
+          component: file
         },
         {
           name: 'Input',

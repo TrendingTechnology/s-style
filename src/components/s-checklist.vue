@@ -16,7 +16,7 @@
     @include disabled();
 
     &--label {
-      height: calc(100% - 32px);
+      height: calc(100% - #{$height + 0.5 * $spacing});
     }
   }
 

@@ -32,6 +32,7 @@ import STabs from './components/s-tabs.vue'
 import SAlert from './components/s-alert.vue'
 import SModal from './components/s-modal.vue'
 import SDatepicker from './components/s-datepicker.vue'
+import SFile from './components/s-file.vue'
 
 // Plugin
 class SimpleStyle {
@@ -56,6 +57,7 @@ class SimpleStyle {
     Vue.component('s-alert', SAlert)
     Vue.component('s-modal', SModal)
     Vue.component('s-datepicker', SDatepicker)
+    Vue.component('s-file', SFile)
   }
 }
 
@@ -78,7 +80,8 @@ export {
   STabs,
   SAlert,
   SModal,
-  SDatepicker
+  SDatepicker,
+  SFile
 }
 
 if (typeof window !== 'undefined' && window.Vue) {

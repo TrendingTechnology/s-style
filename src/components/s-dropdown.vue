@@ -188,7 +188,7 @@ export default {
     /**
      * @name documentClick
      * @desc hide the content if the document is clicked (not on the target or content)
-     * @param {event} event - dom event
+    * @param {event} event - dom event
      * @returns {void}
      */
     documentClick(event) {

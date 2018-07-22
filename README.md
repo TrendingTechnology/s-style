@@ -19,8 +19,10 @@ yarn add simple-style
     * [x] Overlay
     * [x] Datepicker
     * [ ] Numberpicker
-    * [ ] File drag and drop / upload
+    * [x] File drag and drop / upload
     * [ ] Layout and Container CSS
+    * [ ] Input Validation
+    * [ ] Form Validation + Error Message Handling
 * [ ] Optimizations
     * [ ] Functional Components 
 * [ ] Tests
