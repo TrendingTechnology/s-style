@@ -23,6 +23,7 @@ yarn add simple-style
     * [ ] Layout and Container CSS
     * [ ] Input Validation
     * [ ] Form Validation + Error Message Handling
+    * [x] Colorpicker
 * [ ] Optimizations
     * [ ] Functional Components 
 * [ ] Tests

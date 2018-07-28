@@ -14,6 +14,7 @@ import block from './views/block.vue'
 import button from './views/button.vue'
 import checkbox from './views/checkbox.vue'
 import checklist from './views/checklist.vue'
+import colorpicker from './views/colorpicker.vue'
 import datepicker from './views/datepicker.vue'
 import dropdown from './views/dropdown.vue'
 import file from './views/file.vue'
@@ -97,6 +98,11 @@ export default new VueRouter({
           name: 'Checklist',
           path: 'checklist',
           component: checklist
+        },
+        {
+          name: 'Colorpicker',
+          path: 'colorpicker',
+          component: colorpicker
         },
         {
           name: 'Datepicker',

@@ -85,7 +85,7 @@ export default {
           {
             name: "align",
             type: "String",
-            default: "",
+            default: "left",
             required: "",
             description: "Align the radio to the right or the left of the view"
           },

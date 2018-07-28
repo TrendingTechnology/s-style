@@ -33,6 +33,7 @@ import SAlert from './components/s-alert.vue'
 import SModal from './components/s-modal.vue'
 import SDatepicker from './components/s-datepicker.vue'
 import SFile from './components/s-file.vue'
+import SColorpicker from './components/s-colorpicker.vue'
 
 // Plugin
 class SimpleStyle {
@@ -58,6 +59,7 @@ class SimpleStyle {
     Vue.component('s-modal', SModal)
     Vue.component('s-datepicker', SDatepicker)
     Vue.component('s-file', SFile)
+    Vue.component('s-colorpicker', SColorpicker)
   }
 }
 
@@ -81,7 +83,8 @@ export {
   SAlert,
   SModal,
   SDatepicker,
-  SFile
+  SFile,
+  SColorpicker
 }
 
 if (typeof window !== 'undefined' && window.Vue) {

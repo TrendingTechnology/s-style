@@ -174,8 +174,8 @@
       </span>
     </div>
     <div class="s-datepicker__content" ref="content">
-      <div class="s-datepicker__content__holder" v-bind:style="{width: contentWidth + 'px'}">
-        <div class="s-datepicker__picker">
+      <div class="s-datepicker__content__holder" v-on:click="hideContent()" v-bind:style="{width: contentWidth + 'px'}">
+        <div class="s-datepicker__picker" v-on:click="$event.stopPropagation()">
           <div class="s-datepicker__picker__control">
             <div class="s-datepicker__picker__control__left" v-on:click="previousLevel()">
               <i class="fas fa-angle-left"></i>
@@ -263,6 +263,12 @@ export default {
     }
   },
   props: {
+    value: {
+      required: true,
+      validator: val => {
+        return Utility.helpers.isDate(val);
+      }
+    },
     position: {
       type: String,
       default: "vertical"
@@ -344,8 +350,6 @@ export default {
      */
     buildPicker() {
       let val = this.value;
-
-      console.log(this.value);
 
       // if the date is not valid set it to today's date
       if (!Utility.helpers.isDate(val)) {

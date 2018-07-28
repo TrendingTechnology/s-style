@@ -3,20 +3,20 @@
 
 <template>
   <div>
-    <h3> Datepicker </h3>
-    <p> Datepickers are elements that allow a user to type and interact with the UI. They are better suited for situations where input is large (i.e: long address entries)</p>
-    <demo :code="datepickerTemplate">
-      <s-datepicker label="Datepicker" v-model="datepicker">
-      </s-datepicker>
-      <s-datepicker label="Datepicker" v-model="datepicker">
-        <template slot-scope="date">
-          {{date.fullDate}}
+    <h3> Colorpicker </h3>
+    <p> Colorpickers are elements that allow a user to type and interact with the UI. They are better suited for situations where input is large (i.e: long address entries)</p>
+    <demo :code="colorpickerTemplate">
+      <s-colorpicker label="Colorpicker" v-model="colorpicker">
+      </s-colorpicker>
+      <s-colorpicker label="Colorpicker" align="right" v-model="colorpicker">
+        <template>
+          {{colorpicker}}
         </template>
-      </s-datepicker>
-      <s-datepicker label="Datepicker" v-model="datepicker" :disabled="true">
-      </s-datepicker>
+      </s-colorpicker>
+      <s-colorpicker label="Colorpicker" v-model="colorpicker" :disabled="true">
+      </s-colorpicker>
     </demo>
-    <options :items="datepickerItems"></options>
+    <options :items="colorpickerItems"></options>
   </div>
 </template>
 
@@ -31,29 +31,29 @@ export default {
   },
   data() {
     return {
-      datepickerTemplate: `
+      colorpickerTemplate: `
 <template>
-  <s-datepicker label="Datepicker" v-model="datepicker">
-  </s-datepicker>
-  <s-datepicker label="Datepicker" v-model="datepicker">
-    <template slot-scope="date">
-      {{date.fullDate}}
+  <s-colorpicker label="Colorpicker" v-model="colorpicker">
+  </s-colorpicker>
+  <s-colorpicker label="Colorpicker" align="right" v-model="colorpicker">
+    <template>
+      {{colorpicker}}
     </template>
-  </s-datepicker>
-  <s-datepicker label="Datepicker" v-model="datepicker" :disabled="true">
-  </s-datepicker>
+  </s-colorpicker>
+  <s-colorpicker label="Colorpicker" v-model="colorpicker" :disabled="true">
+  </s-colorpicker>
 </template>
 <script>
   export default {
     data(){
       return{
-        datepicker: new Date()
+        colorpicker: "#278DD3"
       }
     }
   }
 <\/script>`,
-      datepicker: new Date(),
-      datepickerItems: {
+      colorpicker: "#278DD3",
+      colorpickerItems: {
         Props: [
           {
             name: "label",
@@ -78,10 +78,11 @@ export default {
           },
           {
             name: "v-model",
-            type: "Date",
+            type: "Color (Hex)",
             default: "",
             required: "Yes",
-            description: "Bind data to the model. Must be a valid date object"
+            description:
+              "Bind data to the model. Must be a valid  Color (Hex) string"
           },
           {
             name: "inputDelay",
@@ -95,15 +96,22 @@ export default {
             type: "String",
             default: "vertical",
             required: "",
-            description: "Default position of the datepicker content"
+            description: "Default position of the color content"
+          },
+          {
+            name: "align",
+            type: "String",
+            default: "left",
+            required: "",
+            description:
+              "Align the checkbox to the right or the left of the view"
           }
         ],
         Slots: [
           {
             name: "",
-            scope:
-              "value (raw value), shortDate (date in the form of MM/DD/YYYY), fullDate (date in the form of Month Day, Year)",
-            description: "Manually set the view of the datepicker"
+            scope: "",
+            description: "Manually set the view of the colorpicker"
           }
         ],
         Events: [

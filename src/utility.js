@@ -7,8 +7,10 @@ function Utility() {
             isDefined: isDefined,
             isDate: isDate,
             isLeapYear: isLeapYear,
+            isColor: isColor,
             convert: convert,
-            clean: clean
+            clean: clean,
+            rgbaToHex: rgbaToHex
         },
         constants: {
             scrollBarWidth: 'undefined',
@@ -204,6 +206,17 @@ function Utility() {
     }
 
     /**
+     * @name isColor
+     * @param {string} c  - color to check
+     * @desc check if passed in value is a valid color
+     * @returns {boolean} truthy value if the passed in item is a valid color
+     */
+    function isColor(c) {
+        return /(^#[0-9A-F]{6}$)|(^#[0-9A-F]{3}$)/i.test(c)
+    }
+
+
+    /**
     * @name convert
     * @param {*} raw - raw value
     * @param {string} model - model to grab the value of (in format of a.b.c)
@@ -232,7 +245,6 @@ function Utility() {
         return converted
     }
 
-    // convert to a viewable or model option
     /**
     * @name clean
     * @param {*} raw - raw value
@@ -255,6 +267,18 @@ function Utility() {
             return String(raw).replace(/ /g, '_').toUpperCase()
         }
         return raw
+    }
+
+    /**
+    * @name rgbaToHex
+    * @param {number} r - red value
+    * @param {number} g - green value
+    * @param {number} b - blue value
+    * @desc convert rgb to hex
+    * @returns {string} cleaned value
+    */
+    function rgbaToHex(r, g, b) {
+        return "#" + ((1 << 24) + (r << 16) + (g << 8) + b).toString(16).slice(1);
     }
 
     /**

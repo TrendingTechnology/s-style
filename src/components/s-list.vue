@@ -113,7 +113,7 @@ export default {
     scrollList(event, direction, amount) {
       this.renderList();
 
-      if (this.scorll) {
+      if (this.scroll) {
         if (!this.loading) {
           if (amount >= 0.75 && direction === "down") {
             this.scroll();
